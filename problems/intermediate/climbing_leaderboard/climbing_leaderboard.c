@@ -14,6 +14,16 @@
  */
 
 int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCount, int* resultCount) {
+    // Remove duplicates from the ranked array
+    int* uniqueRanked = (int*)malloc(rankedCount * sizeof(int));
+    int uniqueCount = 0;
+    uniqueRanked[uniqueCount++] = ranked[0];
+    for (int i = 1; i < rankedCount; i++) {
+        if (ranked[i] != ranked[i - 1]) {
+            uniqueRanked[uniqueCount++] = ranked[i];
+        }
+    }
+
     *resultCount = 0;
     // Write your code here
     return NULL;
