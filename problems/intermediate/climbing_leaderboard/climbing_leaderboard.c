@@ -23,6 +23,10 @@ int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCo
             uniqueRanked[uniqueCount++] = ranked[i];
         }
     }
+     // Allocate memory for the result array
+    int* result = (int*)malloc(playerCount * sizeof(int));
+    *resultCount = playerCount;
+
 
     *resultCount = 0;
     // Write your code here
