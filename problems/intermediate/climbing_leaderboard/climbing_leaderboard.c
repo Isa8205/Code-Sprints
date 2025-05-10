@@ -43,6 +43,7 @@ int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCo
     return result;
 }
 
+#ifndef TESTING // Exclude the main function when testing
 int main() {
     int ranked[] = {100, 100, 50, 40, 40, 20, 10};
     int player[] = {5, 25, 50, 120};
@@ -63,3 +64,4 @@ int main() {
 
     return 0;
 }
+#endif
