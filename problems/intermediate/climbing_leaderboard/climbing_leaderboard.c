@@ -52,6 +52,11 @@ int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCo
         printf("%d ", result[i]);
     }
     printf("\n");
+     // Free the memory allocated for the result array
+    free(result);
+
+    return 0;
+}
 
 
 }
