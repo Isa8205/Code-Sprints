@@ -38,6 +38,22 @@ int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCo
     free(uniqueRanked);
 
     return result;
+    int main() {
+    int ranked[] = {100, 100, 50, 40, 40, 20, 10};
+    int player[] = {5, 25, 50, 120};
+    int rankedCount = sizeof(ranked) / sizeof(ranked[0]);
+    int playerCount = sizeof(player) / sizeof(player[0]);
+    int resultCount;
+
+    int* result = climbingLeaderboard(ranked, rankedCount, player, playerCount, &resultCount);
+
+    // Print the result
+    for (int i = 0; i < resultCount; i++) {
+        printf("%d ", result[i]);
+    }
+    printf("\n");
+
+
 }
 
 
