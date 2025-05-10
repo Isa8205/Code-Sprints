@@ -4,7 +4,7 @@ function is_Disarium (num) {
     for (let i = 0; i < numStr.length; i++) {
         sum += Math.pow(parseInt(numStr[i]), i + 1);
     }
-    return sum === num;
+    return sum === num
 }
 
 MediaSourceHandle.export = is_Disarium;
