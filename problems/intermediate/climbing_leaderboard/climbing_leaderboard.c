@@ -26,6 +26,15 @@ int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCo
      // Allocate memory for the result array
     int* result = (int*)malloc(playerCount * sizeof(int));
     *resultCount = playerCount;
+     // Determine the rank for each player's score
+    int index = uniqueCount - 1; // Start from the lowest rank
+    for (int i = 0; i < playerCount; i++) {
+        while (index >= 0 && player[i] >= uniqueRanked[index]) {
+            index--;
+        }
+        result[i] = index + 2; // Rank is index + 2 (1-based index and next rank)
+    }
+
 
 
     *resultCount = 0;
