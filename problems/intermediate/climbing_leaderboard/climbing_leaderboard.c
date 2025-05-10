@@ -14,7 +14,54 @@
  */
 
 int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCount, int* resultCount) {
-    *resultCount = 0;
-    // Write your code here
-    return NULL;
+    // Remove duplicates from the ranked array
+    int* uniqueRanked = (int*)malloc(rankedCount * sizeof(int));
+    int uniqueCount = 0;
+    uniqueRanked[uniqueCount++] = ranked[0];
+    for (int i = 1; i < rankedCount; i++) {
+        if (ranked[i] != ranked[i - 1]) {
+            uniqueRanked[uniqueCount++] = ranked[i];
+        }
+    }
+
+    // Allocate memory for the result array
+    int* result = (int*)malloc(playerCount * sizeof(int));
+    *resultCount = playerCount;
+
+    // Determine the rank for each player's score
+    int index = uniqueCount - 1; // Start from the lowest rank
+    for (int i = 0; i < playerCount; i++) {
+        while (index >= 0 && player[i] >= uniqueRanked[index]) {
+            index--;
+        }
+        result[i] = index + 2; // Rank is index + 2 (1-based index and next rank)
+    }
+
+    // Free the memory allocated for uniqueRanked
+    free(uniqueRanked);
+
+    return result;
 }
+
+#ifndef TESTING // Exclude the main function when testing
+int main() {
+    int ranked[] = {100, 100, 50, 40, 40, 20, 10};
+    int player[] = {5, 25, 50, 120};
+    int rankedCount = sizeof(ranked) / sizeof(ranked[0]);
+    int playerCount = sizeof(player) / sizeof(player[0]);
+    int resultCount;
+
+    int* result = climbingLeaderboard(ranked, rankedCount, player, playerCount, &resultCount);
+
+    // Print the result
+    for (int i = 0; i < resultCount; i++) {
+        printf("%d ", result[i]);
+    }
+    printf("\n");
+
+    // Free the memory allocated for the result array
+    free(result);
+
+    return 0;
+}
+#endif
