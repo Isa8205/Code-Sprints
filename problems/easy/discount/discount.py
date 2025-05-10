@@ -4,4 +4,8 @@
 
 def getdiscountedPS(p,d):
     
-    return 0
+    price =p *(d/100)
+    
+    return price
+
+print(getdiscountedPS(1500,50))
