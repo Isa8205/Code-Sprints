@@ -34,6 +34,12 @@ int* climbingLeaderboard(int* ranked, int rankedCount, int* player, int playerCo
         }
         result[i] = index + 2; // Rank is index + 2 (1-based index and next rank)
     }
+     // Free the memory allocated for uniqueRanked
+    free(uniqueRanked);
+
+    return result;
+}
+
 
 
 
